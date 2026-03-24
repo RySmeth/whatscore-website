@@ -44,9 +44,16 @@
     .screenshots { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
     .screenshots h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
     .screenshots p { color: #94A3B8; margin-bottom: 2rem; }
-    .phone-frame { display: inline-block; position: relative; width: 280px; border-radius: 40px; border: 6px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; }
+    .phone-gallery { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 0 2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
+    .phone-gallery::-webkit-scrollbar { display: none; }
+    .phone-slide { flex: 0 0 auto; scroll-snap-align: center; text-align: center; }
+    .phone-slide .label { font-size: 0.85rem; color: #94A3B8; font-weight: 600; margin-top: 1rem; letter-spacing: 0.03em; }
+    .phone-frame { display: inline-block; position: relative; width: 240px; border-radius: 36px; border: 5px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; }
     .phone-frame img { width: 100%; display: block; }
-    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #000; border-radius: 0 0 18px 18px; z-index: 2; }
+    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 2; }
+    @media (min-width: 1200px) {
+      .phone-gallery { justify-content: center; }
+    }
 
     /* Footer */
     footer { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid #2A2E3B; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -137,9 +144,49 @@
     </div>
     <h2>See It In Action</h2>
     <p>Real-time scoring at your fingertips</p>
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <img src="/screenshot-login.png" alt="WhatScore app login screen" />
+    <div class="phone-gallery">
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-login.png" alt="WhatScore login screen" />
+        </div>
+        <div class="label">Welcome</div>
+      </div>
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-games-live.png" alt="WhatScore live games" />
+        </div>
+        <div class="label">Live Games</div>
+      </div>
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-game-results.png" alt="WhatScore game results" />
+        </div>
+        <div class="label">Results</div>
+      </div>
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-teams.png" alt="WhatScore teams view" />
+        </div>
+        <div class="label">Teams</div>
+      </div>
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-comp-setup.png" alt="WhatScore competition setup" />
+        </div>
+        <div class="label">Competitions</div>
+      </div>
+      <div class="phone-slide">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <img src="/screenshot-create.png" alt="WhatScore create menu" />
+        </div>
+        <div class="label">Create</div>
+      </div>
     </div>
   </section>
 
