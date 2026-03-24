@@ -44,15 +44,26 @@
     .screenshots { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
     .screenshots h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
     .screenshots p { color: #94A3B8; margin-bottom: 2rem; }
-    .phone-gallery { display: flex; gap: 1.5rem; overflow-x: auto; padding: 1rem 0 2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
-    .phone-gallery::-webkit-scrollbar { display: none; }
-    .phone-slide { flex: 0 0 auto; scroll-snap-align: center; text-align: center; }
-    .phone-slide .label { font-size: 0.85rem; color: #94A3B8; font-weight: 600; margin-top: 1rem; letter-spacing: 0.03em; }
-    .phone-frame { display: inline-block; position: relative; width: 240px; border-radius: 36px; border: 5px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; }
+    .carousel { display: flex; align-items: center; justify-content: center; gap: 1.5rem; user-select: none; }
+    .carousel-btn { background: #1A1D28; border: 1px solid #2A2E3B; color: #94A3B8; width: 44px; height: 44px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .carousel-btn:hover { border-color: #3B82F6; color: #F1F5F9; }
+    .carousel-stage { position: relative; width: 280px; }
+    .carousel-slide { display: none; text-align: center; }
+    .carousel-slide.active { display: block; }
+    .phone-frame { display: inline-block; position: relative; width: 280px; border-radius: 40px; border: 6px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+    .phone-frame:hover { transform: scale(1.02); }
     .phone-frame img { width: 100%; display: block; }
-    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 2; }
-    @media (min-width: 1200px) {
-      .phone-gallery { justify-content: center; }
+    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #000; border-radius: 0 0 18px 18px; z-index: 2; }
+    .carousel-label { font-size: 1rem; color: #F1F5F9; font-weight: 700; margin-top: 1.2rem; }
+    .carousel-desc { font-size: 0.85rem; color: #94A3B8; margin-top: 0.4rem; line-height: 1.5; max-width: 300px; margin-left: auto; margin-right: auto; }
+    .carousel-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+    .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #2A2E3B; border: none; cursor: pointer; transition: background 0.2s; padding: 0; }
+    .carousel-dot.active { background: #3B82F6; }
+    @media (max-width: 640px) {
+      .carousel-stage { width: 240px; }
+      .phone-frame { width: 240px; border-radius: 36px; border-width: 5px; }
+      .phone-notch { width: 100px; height: 24px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
     }
 
     /* Footer */
@@ -144,50 +155,84 @@
     </div>
     <h2>See It In Action</h2>
     <p>Real-time scoring at your fingertips</p>
-    <div class="phone-gallery">
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-login.png" alt="WhatScore login screen" />
+    <div class="carousel">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous screenshot">&#8249;</button>
+      <div class="carousel-stage" id="carouselStage">
+        <div class="carousel-slide active" data-label="Welcome" data-desc="Sign in quickly and securely to get started with your teams.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-login.png" alt="WhatScore login screen" />
+          </div>
         </div>
-        <div class="label">Welcome</div>
-      </div>
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-games-live.png" alt="WhatScore live games" />
+        <div class="carousel-slide" data-label="Live Games" data-desc="Follow every game in real time with live score updates as they happen.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-games-live.png" alt="WhatScore live games" />
+          </div>
         </div>
-        <div class="label">Live Games</div>
-      </div>
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-game-results.png" alt="WhatScore game results" />
+        <div class="carousel-slide" data-label="Game Results" data-desc="Browse full results and stats from every match your team has played.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-game-results.png" alt="WhatScore game results" />
+          </div>
         </div>
-        <div class="label">Results</div>
-      </div>
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-teams.png" alt="WhatScore teams view" />
+        <div class="carousel-slide" data-label="Teams" data-desc="Manage your teams, view members, and keep everything organised in one place.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-teams.png" alt="WhatScore teams view" />
+          </div>
         </div>
-        <div class="label">Teams</div>
-      </div>
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-comp-setup.png" alt="WhatScore competition setup" />
+        <div class="carousel-slide" data-label="Competition Setup" data-desc="Set up competitions with custom formats, rounds, and scoring rules.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-comp-setup.png" alt="WhatScore competition setup" />
+          </div>
         </div>
-        <div class="label">Competitions</div>
-      </div>
-      <div class="phone-slide">
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <img src="/screenshot-create.png" alt="WhatScore create menu" />
+        <div class="carousel-slide" data-label="Create" data-desc="Quickly create new games, teams, or competitions from one simple menu.">
+          <div class="phone-frame" onclick="nextSlide()">
+            <div class="phone-notch"></div>
+            <img src="/screenshot-create.png" alt="WhatScore create menu" />
+          </div>
         </div>
-        <div class="label">Create</div>
       </div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next screenshot">&#8250;</button>
     </div>
+    <div class="carousel-label" id="carouselLabel">Welcome</div>
+    <div class="carousel-desc" id="carouselDesc">Sign in quickly and securely to get started with your teams.</div>
+    <div class="carousel-dots" id="carouselDots"></div>
+
+    <script>
+      (function() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const label = document.getElementById('carouselLabel');
+        const desc = document.getElementById('carouselDesc');
+        const dotsContainer = document.getElementById('carouselDots');
+        let current = 0;
+
+        // Build dots
+        slides.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
+          dot.onclick = () => goTo(i);
+          dotsContainer.appendChild(dot);
+        });
+
+        function goTo(index) {
+          slides[current].classList.remove('active');
+          dotsContainer.children[current].classList.remove('active');
+          current = (index + slides.length) % slides.length;
+          slides[current].classList.add('active');
+          dotsContainer.children[current].classList.add('active');
+          label.textContent = slides[current].dataset.label;
+          desc.textContent = slides[current].dataset.desc;
+        }
+
+        window.nextSlide = () => goTo(current + 1);
+        document.getElementById('prevBtn').onclick = () => goTo(current - 1);
+        document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+      })();
+    </script>
   </section>
 
   <footer>
