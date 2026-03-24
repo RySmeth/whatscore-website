@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatScore — Real-Time Amateur Sports Scoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0F1117; color: #F1F5F9; }
+
+    /* Nav */
+    nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 1.5rem 2rem; }
+    nav .logo { font-size: 1.4rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 0; }
+    nav .logo .what { color: #EF4444; }
+    nav .logo .score { color: #3B82F6; }
+    nav .logo .trophy-icon { width: 26px; height: 26px; margin-left: 2px; margin-bottom: 2px; }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .nav-links a { color: #94A3B8; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    nav .nav-links a:hover { color: #F1F5F9; }
+
+    /* Hero */
+    .hero { text-align: center; padding: 5rem 2rem 2rem; max-width: 800px; margin: 0 auto; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+    .hero h1 .accent-red { background: linear-gradient(135deg, #DC2626, #EF4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero h1 .accent { background: linear-gradient(135deg, #3B82F6, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero p { font-size: 1.15rem; color: #94A3B8; max-width: 550px; margin: 0 auto 2.5rem; line-height: 1.6; }
+    .badge-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .store-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #1A1D28; border: 1px solid #2A2E3B; border-radius: 10px; padding: 0.7rem 1.4rem; font-size: 0.9rem; color: #F1F5F9; font-weight: 600; transition: border-color 0.2s; }
+    .store-badge:hover { border-color: #3B82F6; }
+    .store-badge .small { font-size: 0.7rem; font-weight: 400; color: #94A3B8; display: block; }
+
+    /* Features */
+    .features { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+    .features h2 { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 3rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .feature-card { background: #1A1D28; border: 1px solid #2A2E3B; border-radius: 14px; padding: 2rem; }
+    .feature-card .icon { width: 48px; height: 48px; background: transparent; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.5rem; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.9rem; color: #94A3B8; line-height: 1.6; }
+
+    /* Screenshots section */
+    .screenshots { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
+    .screenshots h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+    .screenshots p { color: #94A3B8; margin-bottom: 2rem; }
+    .phone-frame { display: inline-block; position: relative; width: 280px; border-radius: 40px; border: 6px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; }
+    .phone-frame img { width: 100%; display: block; }
+    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #000; border-radius: 0 0 18px 18px; z-index: 2; }
+
+    /* Footer */
+    footer { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid #2A2E3B; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer .footer-brand { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 0; }
+    footer .footer-brand .trophy-icon-sm { width: 18px; height: 18px; margin-left: 2px; }
+    footer .footer-links { display: flex; gap: 1.5rem; }
+    footer .footer-links a { color: #64748B; text-decoration: none; font-size: 0.85rem; }
+    footer .footer-links a:hover { color: #F1F5F9; }
+    footer .footer-copy { color: #475569; font-size: 0.8rem; width: 100%; text-align: center; margin-top: 1rem; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      nav .nav-links { gap: 1rem; }
+      .icon-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .icon-card .icon-preview { width: 96px; height: 96px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><span style="color:#EF4444">What</span><span style="color:#3B82F6">Score</span><span style="color:#F59E0B">!</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="/premium">Premium</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1><span class="accent-red">Follow Every Score.</span><br><span class="accent">In Real Time.</span></h1>
+    <p>The easiest way to manage your amateur sports team, record live scores, and keep your fans updated — all from your phone.</p>
+    <div class="badge-row">
+      <div class="store-badge">
+        <svg width="20" height="24" viewBox="0 0 20 24" fill="none"><path d="M16.5 12.5c0-2.8 2.3-4.2 2.4-4.3-1.3-1.9-3.3-2.2-4-2.2-1.7-.2-3.3 1-4.2 1s-2.2-1-3.6-1c-1.9 0-3.6 1.1-4.5 2.7-1.9 3.4-.5 8.4 1.4 11.1.9 1.3 2 2.8 3.4 2.8 1.4 0 1.9-.9 3.6-.9 1.7 0 2.1.9 3.6.9s2.4-1.3 3.3-2.7c1-1.5 1.4-3 1.5-3.1 0 0-2.9-1.1-2.9-4.3zM13.7 4.3c.8-.9 1.3-2.2 1.1-3.5-1.1 0-2.5.7-3.3 1.7-.7.8-1.3 2.1-1.2 3.4 1.3.1 2.6-.6 3.4-1.6z" fill="#F1F5F9"/></svg>
+        <div><span class="small">Coming soon on</span>App Store</div>
+      </div>
+      <div class="store-badge">
+        <svg width="20" height="22" viewBox="0 0 20 22" fill="none"><path d="M1 1.6L10.5 11 1 20.4c-.3-.5-.5-1.1-.5-1.8V3.4c0-.7.2-1.3.5-1.8zm1.3-1.1L13.7 7l-2.5 2.5L2.3.5zM14.8 7.6l3.2 1.8c.9.5.9 1.7 0 2.2l-3.2 1.8-2.8-2.8 2.8-2.8-.0.2zM2.3 21.5L11.2 15l2.5 2.5L2.3 21.5z" fill="#F1F5F9"/></svg>
+        <div><span class="small">Coming soon on</span>Google Play</div>
+      </div>
+    </div>
+    <div style="margin-top: 3rem;">
+      <img src="/icon.png" alt="WhatScore app icon" style="width: 160px; height: 160px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); border-radius: 36px;" />
+    </div>
+  </section>
+
+  <section class="features" id="features" style="padding-top: 3rem;">
+    <h2>Everything You Need to Follow Your Team</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">&#9917;</div>
+        <h3>Live Scoring</h3>
+        <p>Record goals, points, and events as they happen. Your team's score updates in real time for everyone following along.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128227;</div>
+        <h3>Push Notifications</h3>
+        <p>Never miss a moment. Get notified when games start, scores change, and your team needs you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128101;</div>
+        <h3>Team Management</h3>
+        <p>Create teams, invite members with share codes, and manage roles — owners, managers, and fans.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128202;</div>
+        <h3>Game History</h3>
+        <p>Full archive of every game, score, and event. Filter by team, browse results, and relive the highlights.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#127941;</div>
+        <h3>Multi-Sport</h3>
+        <p>Football, rugby, basketball, hockey, waterpolo, and more. Configurable scoring to cater for your sport.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">&#128274;</div>
+        <h3>Secure & Private</h3>
+        <p>Your data is encrypted, protected by row-level security, and never sold. Delete your account anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screenshots" id="screenshots">
+    <div style="margin-bottom: 2.5rem;">
+      <img src="/logo-trophy.png" alt="WhatScore! logo with trophy" style="max-width: 420px; width: 90%; height: auto; border-radius: 18px; mix-blend-mode: lighten;" />
+    </div>
+    <h2>See It In Action</h2>
+    <p>Real-time scoring at your fingertips</p>
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <img src="/screenshot-login.png" alt="WhatScore app login screen" />
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand"><span style="color:#EF4444">What</span><span style="color:#3B82F6">Score</span><span style="color:#F59E0B">!</span></div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:support@whatscore.app">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 WhatScore. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

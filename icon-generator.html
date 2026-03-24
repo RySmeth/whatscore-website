@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WhatScore App Icon Generator</title>
+<style>
+  body { background: #333; display: flex; flex-direction: column; align-items: center; padding: 2rem; font-family: sans-serif; color: #fff; }
+  h2 { margin-bottom: 1rem; }
+  .sizes { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem; }
+  .size-label { text-align: center; color: #94A3B8; font-size: 0.8rem; margin-top: 0.5rem; }
+  canvas { border-radius: 20%; }
+  button { margin-top: 1.5rem; padding: 0.8rem 2rem; background: #3B82F6; color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+  button:hover { background: #2563EB; }
+  p { color: #94A3B8; margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+  <h2>WhatScore App Icon</h2>
+  <canvas id="icon" width="1024" height="1024"></canvas>
+  <button onclick="download()">Download 1024x1024 PNG</button>
+  <p>Right-click the icon above to save, or click the button.</p>
+
+  <div class="sizes">
+    <div><canvas id="icon-180" width="180" height="180"></canvas><div class="size-label">180px (iPhone)</div></div>
+    <div><canvas id="icon-120" width="120" height="120"></canvas><div class="size-label">120px</div></div>
+    <div><canvas id="icon-60" width="60" height="60"></canvas><div class="size-label">60px</div></div>
+    <div><canvas id="icon-40" width="40" height="40"></canvas><div class="size-label">40px</div></div>
+  </div>
+
+<script>
+function drawIcon(canvas) {
+  const ctx = canvas.getContext('2d');
+  const s = canvas.width;
+
+  // Background gradient (dark navy to blue)
+  const grad = ctx.createLinearGradient(0, 0, s, s);
+  grad.addColorStop(0, '#1E3A5F');
+  grad.addColorStop(0.5, '#1A56DB');
+  grad.addColorStop(1, '#0F1117');
+
+  // Rounded rect background
+  const r = s * 0.22; // iOS corner radius
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(s - r, 0);
+  ctx.quadraticCurveTo(s, 0, s, r);
+  ctx.lineTo(s, s - r);
+  ctx.quadraticCurveTo(s, s, s - r, s);
+  ctx.lineTo(r, s);
+  ctx.quadraticCurveTo(0, s, 0, s - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Draw Trophy SVG using Path2D (lucide trophy, viewBox 0 0 24 24)
+  ctx.save();
+
+  // Scale and center the trophy (shifted up to make room for text)
+  const iconScale = s * 0.45 / 24;
+  ctx.translate(s / 2 - 12 * iconScale, s * 0.15);
+  ctx.scale(iconScale, iconScale);
+
+  ctx.fillStyle = 'transparent';
+  ctx.strokeStyle = '#FFFFFF';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  // Trophy paths from lucide
+  const paths = [
+    "M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978",
+    "M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978",
+    "M18 9h1.5a1 1 0 0 0 0-5H18",
+    "M4 22h16",
+    "M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z",
+    "M6 9H4.5a1 1 0 0 1 0-5H6",
+  ];
+  for (const d of paths) {
+    const p = new Path2D(d);
+    ctx.stroke(p);
+  }
+
+  ctx.restore();
+
+  // Draw "WhatScore" text at bottom
+  const fontSize = s * 0.13;
+  ctx.font = `800 ${fontSize}px Inter, -apple-system, BlinkMacSystemFont, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+
+  const textY = s * 0.88;
+  const whatText = 'What';
+  const scoreText = 'Score';
+  const whatWidth = ctx.measureText(whatText).width;
+  const scoreWidth = ctx.measureText(scoreText).width;
+  const totalWidth = whatWidth + scoreWidth;
+  const startX = (s - totalWidth) / 2;
+
+  ctx.fillStyle = '#EF4444';
+  ctx.fillText(whatText, startX + whatWidth / 2, textY);
+  ctx.fillStyle = '#3B82F6';
+  ctx.fillText(scoreText, startX + whatWidth + scoreWidth / 2, textY);
+}
+
+// Draw all sizes
+drawIcon(document.getElementById('icon'));
+drawIcon(document.getElementById('icon-180'));
+drawIcon(document.getElementById('icon-120'));
+drawIcon(document.getElementById('icon-60'));
+drawIcon(document.getElementById('icon-40'));
+
+function download() {
+  const canvas = document.getElementById('icon');
+  const link = document.createElement('a');
+  link.download = 'whatscore-icon-1024.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
+</body>
+</html>
