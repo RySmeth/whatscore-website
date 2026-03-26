@@ -41,50 +41,38 @@
     .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .feature-card p { font-size: 0.9rem; color: #94A3B8; line-height: 1.6; }
 
-    /* Feature spotlight sections */
-    .spotlight { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+    /* Tabbed showcase section */
+    .showcase { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+    .showcase-logo { text-align: center; margin-bottom: 2.5rem; }
+    .tab-selector { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .tab-btn { background: #1A1D28; border: 1px solid #2A2E3B; color: #94A3B8; padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .tab-btn:hover { border-color: #3B82F6; color: #F1F5F9; }
+    .tab-btn.active { background: #3B82F6; border-color: #3B82F6; color: #fff; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
     .spotlight-inner { display: flex; align-items: center; gap: 3rem; }
-    .spotlight-inner.reverse { flex-direction: row-reverse; }
     .spotlight-text { flex: 1; }
     .spotlight-text h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
     .spotlight-text p { color: #94A3B8; line-height: 1.7; font-size: 0.95rem; }
     .spotlight-carousel { flex: 0 0 auto; }
     .mini-carousel { display: flex; align-items: center; gap: 1rem; user-select: none; }
-    .mini-carousel .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
-    .mini-carousel .carousel-stage { width: 240px; }
-    .mini-carousel .phone-frame { width: 240px; border-radius: 36px; border-width: 5px; }
-    .mini-carousel .phone-notch { width: 100px; height: 24px; border-radius: 0 0 16px 16px; }
-    .mini-carousel .carousel-dots { margin-top: 1rem; }
-    @media (max-width: 768px) {
-      .spotlight-inner, .spotlight-inner.reverse { flex-direction: column; text-align: center; }
-      .mini-carousel .carousel-stage { width: 220px; }
-      .mini-carousel .phone-frame { width: 220px; border-radius: 32px; }
-    }
-
-    /* Screenshots section */
-    .screenshots { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
-    .screenshots h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-    .screenshots p { color: #94A3B8; margin-bottom: 2rem; }
-    .carousel { display: flex; align-items: center; justify-content: center; gap: 1.5rem; user-select: none; }
-    .carousel-btn { background: #1A1D28; border: 1px solid #2A2E3B; color: #94A3B8; width: 44px; height: 44px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .carousel-btn { background: #1A1D28; border: 1px solid #2A2E3B; color: #94A3B8; width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; font-family: inherit; }
     .carousel-btn:hover { border-color: #3B82F6; color: #F1F5F9; }
-    .carousel-stage { position: relative; width: 280px; }
+    .carousel-stage { position: relative; width: 240px; }
     .carousel-slide { display: none; text-align: center; }
     .carousel-slide.active { display: block; }
-    .phone-frame { display: inline-block; position: relative; width: 280px; border-radius: 40px; border: 6px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+    .phone-frame { display: inline-block; position: relative; width: 240px; border-radius: 36px; border: 5px solid #2A2E3B; background: #000; box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 2px #1A1D28; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
     .phone-frame:hover { transform: scale(1.02); }
     .phone-frame img { width: 100%; display: block; }
-    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #000; border-radius: 0 0 18px 18px; z-index: 2; }
-    .carousel-label { font-size: 1rem; color: #F1F5F9; font-weight: 700; margin-top: 1.2rem; }
-    .carousel-desc { font-size: 0.85rem; color: #94A3B8; margin-top: 0.4rem; line-height: 1.5; max-width: 300px; margin-left: auto; margin-right: auto; }
-    .carousel-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 2; }
+    .carousel-label { font-size: 0.9rem; color: #F1F5F9; font-weight: 700; margin-top: 1rem; text-align: center; }
+    .carousel-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
     .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #2A2E3B; border: none; cursor: pointer; transition: background 0.2s; padding: 0; }
     .carousel-dot.active { background: #3B82F6; }
-    @media (max-width: 640px) {
-      .carousel-stage { width: 240px; }
-      .phone-frame { width: 240px; border-radius: 36px; border-width: 5px; }
-      .phone-notch { width: 100px; height: 24px; }
-      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+    @media (max-width: 768px) {
+      .spotlight-inner { flex-direction: column; text-align: center; }
+      .carousel-stage { width: 220px; }
+      .phone-frame { width: 220px; border-radius: 32px; }
     }
 
     /* Footer */
@@ -170,174 +158,188 @@
     </div>
   </section>
 
-  <!-- Spotlight: Access & Visibility -->
-  <section class="spotlight">
-    <div class="spotlight-inner">
-      <div class="spotlight-text">
-        <h2>Your Team, Your Rules</h2>
-        <p>When creating a team (or competition) a unique share code is generated. Fans can use that code to find and join the team or comp. If a team/comp is public, anyone with the code can follow instantly and start receiving live updates. With private teams/comps, join requests need to be approved by the team/comp owner or manager. Owners/Managers can regenerate new codes at any time. Either way, you stay in control.</p>
-      </div>
-      <div class="spotlight-carousel">
-        <div class="mini-carousel" id="accessCarousel">
-          <button class="carousel-btn" aria-label="Previous">&#8249;</button>
-          <div class="carousel-stage">
-            <div class="carousel-slide active" data-label="Team Visibility">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-team-visibility.png" alt="Team visibility toggle" />
-              </div>
-            </div>
-            <div class="carousel-slide" data-label="Competition Visibility">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-comp-visibility.png" alt="Competition visibility setting" />
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn" aria-label="Next">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="accessDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Spotlight: Push Notifications -->
-  <section class="spotlight">
-    <div class="spotlight-inner reverse">
-      <div class="spotlight-text">
-        <h2>Never Miss a Moment</h2>
-        <p>During games the team manager creates game events e.g. Progress updates (Kick Off, Half Time, Full Time), Score updates (Our Team 2 | 1 The Opposition), and more with the ability to capture individual game event notes. These can be delivered instantly to your phone. You're in control! By choosing what you want to be notified about, you can: get notifications about all events, just progress events, scores only or turn notifications off entirely AND you can fine-tune competition alerts separately. You're always in control and in the loop! ...AND if you want to see any details for any game (Live or Completed) - just open WhatScore!</p>
-      </div>
-      <div class="spotlight-carousel">
-        <div class="mini-carousel" id="notifCarousel">
-          <button class="carousel-btn" aria-label="Previous">&#8249;</button>
-          <div class="carousel-stage">
-            <div class="carousel-slide active" data-label="All Events">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-notif-all.png" alt="All notifications" />
-              </div>
-            </div>
-            <div class="carousel-slide" data-label="Scores Only">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-notif-score.png" alt="Score notifications" />
-              </div>
-            </div>
-            <div class="carousel-slide" data-label="Progress Only">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-notif-progress.png" alt="Progress notifications" />
-              </div>
-            </div>
-            <div class="carousel-slide" data-label="None">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-notif-none.png" alt="No notifications" />
-              </div>
-            </div>
-            <div class="carousel-slide" data-label="Live Alert">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <img src="/screenshot-notif-lockscreen.png" alt="Push notification on lock screen" />
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn" aria-label="Next">&#8250;</button>
-        </div>
-        <div class="carousel-dots" id="notifDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="screenshots" id="screenshots">
-    <div style="margin-bottom: 2.5rem;">
+  <section class="showcase" id="screenshots">
+    <div class="showcase-logo">
       <img src="/logo-trophy.png" alt="WhatScore! logo with trophy" style="max-width: 420px; width: 90%; height: auto; border-radius: 18px; mix-blend-mode: lighten;" />
     </div>
-    <h2>See It In Action</h2>
-    <p>Real-time scoring at your fingertips</p>
-    <div class="carousel">
-      <button class="carousel-btn" id="prevBtn" aria-label="Previous screenshot">&#8249;</button>
-      <div class="carousel-stage" id="carouselStage">
-        <div class="carousel-slide active" data-label="Login" data-desc="Sign in quickly and securely to get started with your teams.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-login.png" alt="WhatScore login screen" />
-          </div>
+
+    <div class="tab-selector">
+      <button class="tab-btn active" data-tab="action">See It In Action</button>
+      <button class="tab-btn" data-tab="notifications">Notifications</button>
+      <button class="tab-btn" data-tab="management">Management</button>
+    </div>
+
+    <!-- Tab: See It In Action -->
+    <div class="tab-panel active" id="tab-action">
+      <div class="spotlight-inner">
+        <div class="spotlight-text">
+          <h2>See It In Action</h2>
+          <p>Real-time scoring at your fingertips. From creating teams and competitions to recording live scores, managing game events, and browsing detailed timelines — WhatScore puts everything you need in one place. Click through to explore the app.</p>
         </div>
-        <div class="carousel-slide" data-label="Create" data-desc="Quickly create new games, teams, or competitions from one simple menu.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-create.png" alt="WhatScore create menu" />
+        <div class="spotlight-carousel">
+          <div class="mini-carousel" id="actionCarousel">
+            <button class="carousel-btn" aria-label="Previous">&#8249;</button>
+            <div class="carousel-stage">
+              <div class="carousel-slide active" data-label="Login">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-login.png" alt="WhatScore login screen" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Create">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-create.png" alt="WhatScore create menu" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Share Team">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-share-team.png" alt="WhatScore share team" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Team Setup">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-team-setup.png" alt="WhatScore team setup" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Competition Setup">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-comp-setup.png" alt="WhatScore competition setup" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Game Setup">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-game-setup.png" alt="WhatScore game setup" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Game Results">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-game-results.png" alt="WhatScore game results" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Live Games">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-games-live.png" alt="WhatScore live games" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Detailed Timeline">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-detailed-timeline.png" alt="WhatScore detailed timeline" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Summary Timeline">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-summary-timeline.png" alt="WhatScore summary timeline" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Teams">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-teams.png" alt="WhatScore teams view" />
+                </div>
+              </div>
+            </div>
+            <button class="carousel-btn" aria-label="Next">&#8250;</button>
           </div>
-        </div>
-        <div class="carousel-slide" data-label="Share Team" data-desc="Invite players and fans to your team with a simple share code.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-share-team.png" alt="WhatScore share team" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Team Setup" data-desc="Configure your team details, colours, and sport settings.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-team-setup.png" alt="WhatScore team setup" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Competition Setup" data-desc="Set up competitions with custom formats, rounds, and scoring rules.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-comp-setup.png" alt="WhatScore competition setup" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Game Setup" data-desc="Create a new game with teams, venue, and match settings in seconds.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-game-setup.png" alt="WhatScore game setup" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Game Results" data-desc="Browse full results and stats from every match your team has played.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-game-results.png" alt="WhatScore game results" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Live Games" data-desc="Follow every game in real time with live score updates as they happen.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-games-live.png" alt="WhatScore live games" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Detailed Timeline" data-desc="See every event in the game with a detailed play-by-play timeline.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-detailed-timeline.png" alt="WhatScore detailed timeline" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Summary Timeline" data-desc="Get a quick overview of key moments and scoring highlights.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-summary-timeline.png" alt="WhatScore summary timeline" />
-          </div>
-        </div>
-        <div class="carousel-slide" data-label="Teams" data-desc="Manage your teams, view members, and keep everything organised in one place.">
-          <div class="phone-frame" onclick="nextSlide()">
-            <div class="phone-notch"></div>
-            <img src="/screenshot-teams.png" alt="WhatScore teams view" />
-          </div>
+          <div class="carousel-label" id="actionLabel">Login</div>
+          <div class="carousel-dots" id="actionDots"></div>
         </div>
       </div>
-      <button class="carousel-btn" id="nextBtn" aria-label="Next screenshot">&#8250;</button>
     </div>
-    <div class="carousel-label" id="carouselLabel">Login</div>
-    <div class="carousel-desc" id="carouselDesc">Sign in quickly and securely to get started with your teams.</div>
-    <div class="carousel-dots" id="carouselDots"></div>
+
+    <!-- Tab: Notifications -->
+    <div class="tab-panel" id="tab-notifications">
+      <div class="spotlight-inner">
+        <div class="spotlight-text">
+          <h2>Never Miss a Moment</h2>
+          <p>During games the team manager creates game events e.g. Progress updates (Kick Off, Half Time, Full Time), Score updates (Our Team 2 | 1 The Opposition), and more with the ability to capture individual game event notes. These can be delivered instantly to your phone. You're in control! By choosing what you want to be notified about, you can: get notifications about all events, just progress events, scores only or turn notifications off entirely AND you can fine-tune competition alerts separately. You're always in control and in the loop! ...AND if you want to see any details for any game (Live or Completed) - just open WhatScore!</p>
+        </div>
+        <div class="spotlight-carousel">
+          <div class="mini-carousel" id="notifCarousel">
+            <button class="carousel-btn" aria-label="Previous">&#8249;</button>
+            <div class="carousel-stage">
+              <div class="carousel-slide active" data-label="All Events">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-notif-all.png" alt="All notifications" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Scores Only">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-notif-score.png" alt="Score notifications" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Progress Only">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-notif-progress.png" alt="Progress notifications" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="None">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-notif-none.png" alt="No notifications" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Live Alert">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-notif-lockscreen.png" alt="Push notification on lock screen" />
+                </div>
+              </div>
+            </div>
+            <button class="carousel-btn" aria-label="Next">&#8250;</button>
+          </div>
+          <div class="carousel-label" id="notifLabel">All Events</div>
+          <div class="carousel-dots" id="notifDots"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Management -->
+    <div class="tab-panel" id="tab-management">
+      <div class="spotlight-inner">
+        <div class="spotlight-text">
+          <h2>Your Team, Your Rules</h2>
+          <p>When creating a team (or competition) a unique share code is generated. Fans can use that code to find and join the team or comp. If a team/comp is public, anyone with the code can follow instantly and start receiving live updates. With private teams/comps, join requests need to be approved by the team/comp owner or manager. Owners/Managers can regenerate new codes at any time. Either way, you stay in control.</p>
+        </div>
+        <div class="spotlight-carousel">
+          <div class="mini-carousel" id="accessCarousel">
+            <button class="carousel-btn" aria-label="Previous">&#8249;</button>
+            <div class="carousel-stage">
+              <div class="carousel-slide active" data-label="Team Visibility">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-team-visibility.png" alt="Team visibility toggle" />
+                </div>
+              </div>
+              <div class="carousel-slide" data-label="Competition Visibility">
+                <div class="phone-frame"><div class="phone-notch"></div>
+                  <img src="/screenshot-comp-visibility.png" alt="Competition visibility setting" />
+                </div>
+              </div>
+            </div>
+            <button class="carousel-btn" aria-label="Next">&#8250;</button>
+          </div>
+          <div class="carousel-label" id="accessLabel">Team Visibility</div>
+          <div class="carousel-dots" id="accessDots"></div>
+        </div>
+      </div>
+    </div>
 
     <script>
-      // Reusable mini carousel initialiser
-      function initMiniCarousel(containerId, dotsId) {
+      // Tab switching
+      (function() {
+        var tabs = document.querySelectorAll('.tab-btn');
+        var panels = document.querySelectorAll('.tab-panel');
+        tabs.forEach(function(tab) {
+          tab.onclick = function() {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            tab.classList.add('active');
+            document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+          };
+        });
+      })();
+
+      // Reusable carousel initialiser with label support
+      function initMiniCarousel(containerId, dotsId, labelId) {
         var container = document.getElementById(containerId);
         var slides = container.querySelectorAll('.carousel-slide');
         var dotsContainer = document.getElementById(dotsId);
+        var labelEl = labelId ? document.getElementById(labelId) : null;
         var btns = container.querySelectorAll('.carousel-btn');
         var current = 0;
 
@@ -354,6 +356,7 @@
           current = (index + slides.length) % slides.length;
           slides[current].classList.add('active');
           dotsContainer.children[current].classList.add('active');
+          if (labelEl) labelEl.textContent = slides[current].dataset.label;
         }
 
         btns[0].onclick = function() { goTo(current - 1); };
@@ -363,40 +366,9 @@
         });
       }
 
-      initMiniCarousel('accessCarousel', 'accessDots');
-      initMiniCarousel('notifCarousel', 'notifDots');
-
-      // Main screenshots carousel
-      (function() {
-        var stage = document.getElementById('carouselStage');
-        var slides = stage.querySelectorAll('.carousel-slide');
-        var label = document.getElementById('carouselLabel');
-        var desc = document.getElementById('carouselDesc');
-        var dotsContainer = document.getElementById('carouselDots');
-        var current = 0;
-
-        slides.forEach(function(_, i) {
-          var dot = document.createElement('button');
-          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-          dot.setAttribute('aria-label', 'Go to screenshot ' + (i + 1));
-          dot.onclick = function() { goTo(i); };
-          dotsContainer.appendChild(dot);
-        });
-
-        function goTo(index) {
-          slides[current].classList.remove('active');
-          dotsContainer.children[current].classList.remove('active');
-          current = (index + slides.length) % slides.length;
-          slides[current].classList.add('active');
-          dotsContainer.children[current].classList.add('active');
-          label.textContent = slides[current].dataset.label;
-          desc.textContent = slides[current].dataset.desc;
-        }
-
-        window.nextSlide = function() { goTo(current + 1); };
-        document.getElementById('prevBtn').onclick = function() { goTo(current - 1); };
-        document.getElementById('nextBtn').onclick = function() { goTo(current + 1); };
-      })();
+      initMiniCarousel('actionCarousel', 'actionDots', 'actionLabel');
+      initMiniCarousel('notifCarousel', 'notifDots', 'notifLabel');
+      initMiniCarousel('accessCarousel', 'accessDots', 'accessLabel');
     </script>
   </section>
 
