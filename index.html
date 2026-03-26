@@ -105,10 +105,18 @@
     footer .footer-copy { color: #475569; font-size: 0.8rem; width: 100%; text-align: center; margin-top: 1rem; }
 
     /* Scroll indicator */
-    .scroll-hint { text-align: center; padding: 1rem 0 2rem; }
-    .scroll-hint span { display: inline-block; color: #475569; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; }
-    .scroll-arrow { display: block; margin: 0.5rem auto 0; width: 24px; height: 24px; color: #3B82F6; animation: bounce 2s ease infinite; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    .scroll-hint { text-align: center; padding: 1.5rem 0 2.5rem; transition: opacity 0.5s, max-height 0.5s; overflow: hidden; }
+    .scroll-hint.hidden { opacity: 0; max-height: 0; padding: 0; }
+    .scroll-hint .scroll-label { display: block; color: #F1F5F9; font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+    .scroll-arrows { display: flex; justify-content: center; align-items: center; gap: 0.4rem; }
+    .scroll-arrows svg { width: 28px; height: 28px; animation: bounce 2s ease infinite; }
+    .scroll-arrows svg:nth-child(1) { color: #EF4444; animation-delay: 0s; }
+    .scroll-arrows svg:nth-child(2) { color: #3B82F6; animation-delay: 0.15s; }
+    .scroll-arrows svg:nth-child(3) { color: #F59E0B; animation-delay: 0.3s; }
+    .scroll-arrows svg:nth-child(4) { color: #F59E0B; animation-delay: 0.3s; }
+    .scroll-arrows svg:nth-child(5) { color: #3B82F6; animation-delay: 0.15s; }
+    .scroll-arrows svg:nth-child(6) { color: #EF4444; animation-delay: 0s; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
     @media (max-width: 640px) {
       .hero h1 { font-size: 2.2rem; }
@@ -181,9 +189,16 @@
         <p>Your data is encrypted, protected by row-level security, and never sold. Delete your account anytime.</p>
       </div>
     </div>
-    <div class="scroll-hint">
-      <span>Explore more below</span>
-      <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    <div class="scroll-hint" id="scrollHint">
+      <span class="scroll-label">Explore more below</span>
+      <div class="scroll-arrows">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
     </div>
   </section>
 
@@ -386,6 +401,18 @@
         }
         placeIcons(document.getElementById('orbitOuter'), outer, 120);
         placeIcons(document.getElementById('orbitInner'), inner, 65);
+      })();
+
+      // Hide scroll hint on scroll
+      (function() {
+        var hint = document.getElementById('scrollHint');
+        var removed = false;
+        window.addEventListener('scroll', function() {
+          if (!removed && window.scrollY > 100) {
+            hint.classList.add('hidden');
+            removed = true;
+          }
+        });
       })();
 
       // Tab switching
