@@ -75,6 +75,26 @@
       .phone-frame { width: 220px; border-radius: 32px; }
     }
 
+    /* Sport icon orbit */
+    .orbit-container { position: relative; width: 300px; height: 300px; margin: 0 auto; }
+    .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(42,46,59,0.5); }
+    .orbit-outer { width: 280px; height: 280px; margin-left: -140px; margin-top: -140px; animation: spin 40s linear infinite; }
+    .orbit-inner { width: 170px; height: 170px; margin-left: -85px; margin-top: -85px; animation: spin 25s linear infinite reverse; }
+    .orbit-icon { position: absolute; width: 40px; height: 40px; background: #1A1D28; border: 1px solid #2A2E3B; border-radius: 10px; padding: 6px; display: flex; align-items: center; justify-content: center; }
+    .orbit-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .orbit-outer .orbit-icon { animation: counter-spin 40s linear infinite; }
+    .orbit-inner .orbit-icon { animation: counter-spin 25s linear infinite reverse; }
+    .orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; }
+    .orbit-center img { width: 100%; height: 100%; border-radius: 14px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes counter-spin { to { transform: rotate(-360deg); } }
+    @media (max-width: 768px) {
+      .orbit-container { width: 260px; height: 260px; }
+      .orbit-outer { width: 240px; height: 240px; margin-left: -120px; margin-top: -120px; }
+      .orbit-inner { width: 150px; height: 150px; margin-left: -75px; margin-top: -75px; }
+      .orbit-icon { width: 34px; height: 34px; padding: 5px; }
+    }
+
     /* Footer */
     footer { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid #2A2E3B; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     footer .footer-brand { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 0; }
@@ -167,6 +187,7 @@
       <button class="tab-btn active" data-tab="action">See It In Action</button>
       <button class="tab-btn" data-tab="notifications">Notifications</button>
       <button class="tab-btn" data-tab="management">Management</button>
+      <button class="tab-btn" data-tab="multisport">Multi-Sport</button>
     </div>
 
     <!-- Tab: See It In Action -->
@@ -316,7 +337,47 @@
       </div>
     </div>
 
+    <!-- Tab: Multi-Sport -->
+    <div class="tab-panel" id="tab-multisport">
+      <div class="spotlight-inner">
+        <div class="spotlight-text">
+          <p>WhatScore supports a wide range of sports — football, rugby union, rugby league, AFL, basketball, netball, hockey, volleyball, water polo, handball, lacrosse, gaelic football, baseball, american football, ice hockey, futsal, touch football, and more. Each sport comes with its own scoring configuration so you can record the right events for your game. One app for all your teams, no matter the sport.</p>
+        </div>
+        <div class="spotlight-carousel">
+          <div class="orbit-container">
+            <div class="orbit-ring orbit-outer" id="orbitOuter"></div>
+            <div class="orbit-ring orbit-inner" id="orbitInner"></div>
+            <div class="orbit-center">
+              <img src="/favicon.png" alt="WhatScore" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
+      // Build sport icon orbits
+      (function() {
+        var outer = ['soccer','rugby-union','afl-ball','lacrosse','field-hockey','volleyball','netball','basketball','gaelic-football'];
+        var inner = ['water-polo','handball','baseball','american-football','ice-hockey'];
+        function placeIcons(ringEl, icons, radius) {
+          var count = icons.length;
+          icons.forEach(function(name, i) {
+            var angle = (2 * Math.PI * i) / count - Math.PI / 2;
+            var x = radius * Math.cos(angle);
+            var y = radius * Math.sin(angle);
+            var el = document.createElement('div');
+            el.className = 'orbit-icon';
+            el.style.left = 'calc(50% + ' + x + 'px - 20px)';
+            el.style.top = 'calc(50% + ' + y + 'px - 20px)';
+            el.innerHTML = '<img src="/sports/' + name + '.png" alt="' + name.replace(/-/g,' ') + '" />';
+            ringEl.appendChild(el);
+          });
+        }
+        placeIcons(document.getElementById('orbitOuter'), outer, 120);
+        placeIcons(document.getElementById('orbitInner'), inner, 65);
+      })();
+
       // Tab switching
       (function() {
         var tabs = document.querySelectorAll('.tab-btn');
