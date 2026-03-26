@@ -104,6 +104,12 @@
     footer .footer-links a:hover { color: #F1F5F9; }
     footer .footer-copy { color: #475569; font-size: 0.8rem; width: 100%; text-align: center; margin-top: 1rem; }
 
+    /* Scroll indicator */
+    .scroll-hint { text-align: center; padding: 1rem 0 2rem; }
+    .scroll-hint span { display: inline-block; color: #475569; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; }
+    .scroll-arrow { display: block; margin: 0.5rem auto 0; width: 24px; height: 24px; color: #3B82F6; animation: bounce 2s ease infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
     @media (max-width: 640px) {
       .hero h1 { font-size: 2.2rem; }
       nav .nav-links { gap: 1rem; }
@@ -117,7 +123,6 @@
   <nav>
     <div class="logo"><span style="color:#EF4444">What</span><span style="color:#3B82F6">Score</span><span style="color:#F59E0B">!</span></div>
     <div class="nav-links">
-      <a href="#features">Features</a>
       <a href="/premium">Premium</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
@@ -175,6 +180,10 @@
         <h3>Secure & Private</h3>
         <p>Your data is encrypted, protected by row-level security, and never sold. Delete your account anytime.</p>
       </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Explore more below</span>
+      <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
     </div>
   </section>
 
