@@ -48,7 +48,7 @@
     .tab-btn { background: #1A1D28; border: 1px solid #2A2E3B; color: #94A3B8; padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; }
     .tab-btn:hover { border-color: #3B82F6; color: #F1F5F9; }
     .tab-btn.active { background: #3B82F6; border-color: #3B82F6; color: #fff; }
-    .tab-panel { display: none; }
+    .tab-panel { display: none; min-height: 520px; }
     .tab-panel.active { display: block; }
     .spotlight-inner { display: flex; align-items: center; gap: 3rem; }
     .spotlight-text { flex: 1; }
@@ -194,6 +194,7 @@
     <div class="tab-panel active" id="tab-action">
       <div class="spotlight-inner">
         <div class="spotlight-text">
+          <h2>See It In Action</h2>
           <p>Real-time scoring at your fingertips. From creating teams and competitions to recording live scores, managing game events, and browsing detailed timelines — WhatScore puts everything you need in one place. Click through to explore the app.</p>
         </div>
         <div class="spotlight-carousel">
@@ -258,7 +259,6 @@
             </div>
             <button class="carousel-btn" aria-label="Next">&#8250;</button>
           </div>
-          <div class="carousel-label" id="actionLabel">Login</div>
           <div class="carousel-dots" id="actionDots"></div>
         </div>
       </div>
@@ -268,6 +268,7 @@
     <div class="tab-panel" id="tab-notifications">
       <div class="spotlight-inner">
         <div class="spotlight-text">
+          <h2>Never Miss a Moment</h2>
           <p>During games the team manager creates game events e.g. Progress updates (Kick Off, Half Time, Full Time), Score updates (Our Team 2 | 1 The Opposition), and more with the ability to capture individual game event notes. These can be delivered instantly to your phone. You're in control! By choosing what you want to be notified about, you can: get notifications about all events, just progress events, scores only or turn notifications off entirely AND you can fine-tune competition alerts separately. You're always in control and in the loop! ...AND if you want to see any details for any game (Live or Completed) - just open WhatScore!</p>
         </div>
         <div class="spotlight-carousel">
@@ -302,7 +303,6 @@
             </div>
             <button class="carousel-btn" aria-label="Next">&#8250;</button>
           </div>
-          <div class="carousel-label" id="notifLabel">All Events</div>
           <div class="carousel-dots" id="notifDots"></div>
         </div>
       </div>
@@ -312,6 +312,7 @@
     <div class="tab-panel" id="tab-management">
       <div class="spotlight-inner">
         <div class="spotlight-text">
+          <h2>Your Team, Your Rules</h2>
           <p>When creating a team (or competition) a unique share code is generated. Fans can use that code to find and join the team or comp. If a team/comp is public, anyone with the code can follow instantly and start receiving live updates. With private teams/comps, join requests need to be approved by the team/comp owner or manager. Owners/Managers can regenerate new codes at any time. Either way, you stay in control.</p>
         </div>
         <div class="spotlight-carousel">
@@ -331,7 +332,6 @@
             </div>
             <button class="carousel-btn" aria-label="Next">&#8250;</button>
           </div>
-          <div class="carousel-label" id="accessLabel">Team Visibility</div>
           <div class="carousel-dots" id="accessDots"></div>
         </div>
       </div>
@@ -341,6 +341,7 @@
     <div class="tab-panel" id="tab-multisport">
       <div class="spotlight-inner">
         <div class="spotlight-text">
+          <h2>One App, Every Sport</h2>
           <p>WhatScore supports a wide range of sports — football, rugby union, rugby league, AFL, basketball, netball, hockey, volleyball, water polo, handball, lacrosse, gaelic football, baseball, american football, ice hockey, futsal, touch football, and more. Each sport comes with its own scoring configuration so you can record the right events for your game. One app for all your teams, no matter the sport.</p>
         </div>
         <div class="spotlight-carousel">
@@ -424,9 +425,9 @@
         });
       }
 
-      initMiniCarousel('actionCarousel', 'actionDots', 'actionLabel');
-      initMiniCarousel('notifCarousel', 'notifDots', 'notifLabel');
-      initMiniCarousel('accessCarousel', 'accessDots', 'accessLabel');
+      initMiniCarousel('actionCarousel', 'actionDots');
+      initMiniCarousel('notifCarousel', 'notifDots');
+      initMiniCarousel('accessCarousel', 'accessDots');
     </script>
   </section>
 
